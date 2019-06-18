@@ -1,0 +1,16 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        mx = 0
+        i, j = 0, 0 #left, right
+        while j < len(s):
+            if (j-i) > mx:
+                mx = j-i
+            if s[j] not in s[i:j]:
+                j += 1
+            else:
+                i += 1
+        # for single char str
+        if (j-i) > mx:
+                mx = j-i
+        return mx
+        
