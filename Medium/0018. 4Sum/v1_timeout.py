@@ -1,7 +1,7 @@
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         l = len(nums)
-        res = {}
+        res = set()
         nums.sort()
         pre_i = None
         for i in range(l-3):
@@ -26,10 +26,10 @@ class Solution:
                     elif nums[i] + nums[j] + nums[m] + nums[n] > target:
                         n -= 1
                     else:
-                        res[(nums[i], nums[j], nums[m], nums[n])] = 1
+                        res.add((nums[i], nums[j], nums[m], nums[n]))
                         m += 1
                         n -= 1
         sol = []
-        for keys in res:
-            sol.append(list(keys))
+        for item in res:
+            sol.append(list(item))
         return sol
